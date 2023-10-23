@@ -18,7 +18,8 @@ MB1OverallProgramTree:
 Property:
 	"Property:" name=STRING
     "DataType:" type=Data_Type
-    ("DefaultValue:" default=STRING)?;
+    ("DefaultValue:" default=STRING)?
+    ("Comment:" default=STRING)?;
 
  SubTable:
 	'SubTable Name: '( subTableName=STRING)
@@ -26,7 +27,7 @@ Property:
 	 property+=Property*
 	 bsTable+=BSTable?
 	 compositeTable+=SubTable*
-	 'end';
+	 'END';
 
 BSTable:
 	 'IndividualBSTable: ' bsTable=STRING;
