@@ -26,6 +26,7 @@ Property:
 	('Supported Version From:' type=SupportVersion)?
 	 property+=Property*
 	 bsTable+=BSTable?
+	 property+=Property*
 	 compositeTable+=SubTable*
 	 'END';
 
