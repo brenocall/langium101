@@ -13,7 +13,8 @@ MB1OverallProgramTree:
 	 'MB1OverallProgramTree'
      'MagicBytes:' magicBytes='CPM2'
 	 property+=Property*
-     subTable+=SubTable* 'END';
+     subTable+=SubTable* 
+	 'END';
 
 Property:
 	'Property: ' name=STRING
@@ -25,12 +26,13 @@ Property:
 	'SubTable Name: '( subTableName=STRING)
 	('Supported Version From:' type=SupportVersion)?
 	 property+=Property*
-	 bsTable+=BSTable?
+	 (bsTable+=BSTable)?
 	 compositeTable+=SubTable*
 	 'END';
 
 BSTable:
-	 'IndividualBSTable: ' bsTable=STRING;
+	 'IndividualBSTable: ' bsTable=STRING
+	property+=Property*;
 	 
 SupportVersion:
     'Base Module Type' ('BaseModuleType:' type=BaseModule_Type)
