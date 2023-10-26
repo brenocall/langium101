@@ -10,14 +10,14 @@ Greeting:
     'Hello' person=[Person:ID] '!';
 
 MB1OverallProgramTree:
-	 "MB1OverallProgramTree"
-     "MagicBytes:" magicBytes='CPM2'
+	 'MB1OverallProgramTree'
+     'MagicBytes:' magicBytes='CPM2'
 	 property+=Property*
      subTable+=SubTable* 'END';
 
 Property:
-	"Property:" name=STRING
-    "DataType:" type=Data_Type
+	'Property: ' name=STRING
+	'NumBytes:' type=Num_Bytes
     ("DefaultValue:" default=STRING)?
     ("Comment:" default=STRING)?;
 
@@ -26,7 +26,6 @@ Property:
 	('Supported Version From:' type=SupportVersion)?
 	 property+=Property*
 	 bsTable+=BSTable?
-	 property+=Property*
 	 compositeTable+=SubTable*
 	 'END';
 
@@ -35,10 +34,18 @@ BSTable:
 	 
 SupportVersion:
     'Base Module Type' ('BaseModuleType:' type=BaseModule_Type)
-	//("Base Module Type: " type=BaseModuleType)
-	"Major Version" majorVersion=INT
-	"Minor Version" minorVersion=INT
+	//('Base Module Type: ' type=BaseModuleType)
+	'Major Version' majorVersion=INT
+	'Minor Version' minorVersion=INT
 ;   
+
+type NumBytes = 'One' | 'Two' | 'Three' | 'Four';
+Num_Bytes returns NumBytes:
+	One | Two | Three | Four;
+One returns string: '1';
+Two returns string: '2';
+Three returns string: '3';
+Four returns string: '4';
 
 type DataType = 'Byte' | 'Short' | 'Int' | 'Long';
 Data_Type returns DataType: 
