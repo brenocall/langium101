@@ -18,9 +18,9 @@ MB1OverallProgramTree:
 
 Property:
 	'Property: ' name=STRING
-	'NumBytes:' type=Num_Bytes
+	'NumBytes:' numBytes=Num_Bytes
     ("DefaultValue:" default=STRING)?
-    ("Comment:" default=STRING)?;
+    ("Comment:" comment=STRING)?;
 
  SubTable:
 	'SubTable Name: '( subTableName=STRING)
