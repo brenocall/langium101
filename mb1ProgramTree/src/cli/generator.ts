@@ -8,7 +8,9 @@ import { extractDestinationAndName } from './cli-util.js';
 
 export function replacer(key:any,value:any)
 {
-
+    
+    console.log("key: "+key);
+    console.log("value: "+value);
     /** Every AST node has a type corresponding to what was specified in the grammar declaration. */
     if (key=="$type") return undefined;
     /** The container node in the AST; every node except the root node has a container. */
@@ -41,6 +43,10 @@ export function generateJavaScript(model: Model, filePath: string, destination: 
     for (let mB1programTree of model.mb1ProgramTree)
     {
         fileNode.append(`${JSON.stringify(mB1programTree, replacer, 2)}`, NL);
+        /*for (let subTable of mB1programTree.subTable)
+        {
+            fileNode.append(`${JSON.stringify(subTable, replacer, 2)}`, NL);
+        }*/
     }
 
     if (!fs.existsSync(data.destination)) {

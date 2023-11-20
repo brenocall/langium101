@@ -23,7 +23,7 @@ export default function(): void {
 
     program
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        .version(require('../../package.json').version);
+       // .version(require('../../package.json').version);
 
     const fileExtensions = Mb1ProgramTreeLanguageMetaData.fileExtensions.join(', ');
     program

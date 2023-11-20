@@ -1,37 +1,30 @@
 grammar Mb1ProgramTree
 
 entry Model:
-    persons+=Person | greetings+=Greeting| mb1ProgramTree+=MB1OverallProgramTree;
-
-Person:
-    'person' name=ID;
-
-Greeting:
-    'Hello' person=[Person:ID] '!';
+  mb1ProgramTree+=MB1OverallProgramTree;
 
 MB1OverallProgramTree:
 	 'MB1OverallProgramTree'
      'MagicBytes:' magicBytes='CPM2'
-	 property+=Property*
-     subTable+=SubTable* 
+	 properties+=Property*
+     subtables+=SubTable* 
 	 'END';
 
 Property:
 	'Property: ' name=STRING
 	'NumBytes:' numBytes=Num_Bytes
-    ("DefaultValue:" default=STRING)?
-    ("Comment:" comment=STRING)?;
+    ("DefaultValue:" default=STRING)?;
 
  SubTable:
 	'SubTable Name: '( subTableName=STRING)
 	('Supported Version From:' type=SupportVersion)?
-	 property+=Property*
+	 properties+=Property*
 	 (bsTable+=BSTable)?
-	 compositeTable+=SubTable*
+	 subtables+=SubTable*
 	 'END';
 
 BSTable:
-	 'IndividualBSTable: ' bsTable=STRING
+	 'ContentType: ' contentType=STRING
 	property+=Property*;
 	 
 SupportVersion:
