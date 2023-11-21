@@ -5,27 +5,26 @@ entry Model:
 
 MB1OverallProgramTree:
 	 'MB1OverallProgramTree'
-     'MagicBytes:' magicBytes='CPM2'
-	 properties+=Property*
-     subtables+=SubTable* 
+	 properties+=PropertyType*
+     subtables+=SubTableType* 
 	 'END';
 
-Property:
+PropertyType:
 	'Property: ' name=STRING
 	'NumBytes:' numBytes=Num_Bytes
     ("DefaultValue:" default=STRING)?;
 
- SubTable:
-	'SubTable Name: '( subTableName=STRING)
+ SubTableType:
+	'SubTable Name: '( name=STRING)
 	('Supported Version From:' type=SupportVersion)?
-	 properties+=Property*
+	 properties+=PropertyType*
 	 (bsTable+=BSTable)?
-	 subtables+=SubTable*
+	 subtables+=SubTableType*
 	 'END';
 
 BSTable:
 	 'ContentType: ' contentType=STRING
-	property+=Property*;
+	properties+=PropertyType*;
 	 
 SupportVersion:
     'Base Module Type' ('BaseModuleType:' type=BaseModule_Type)
