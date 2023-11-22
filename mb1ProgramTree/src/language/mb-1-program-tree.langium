@@ -1,13 +1,7 @@
 grammar Mb1ProgramTree
 
 entry Model:
-  mb1ProgramTree+=MB1OverallProgramTree;
-
-MB1OverallProgramTree:
-	 'MB1OverallProgramTree'
-	 properties+=PropertyType*
-     subtables+=SubTableType* 
-	 'END';
+  mb1ProgramTree+=SubTableType;
 
 PropertyType:
 	'Property: ' name=STRING
