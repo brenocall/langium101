@@ -1,7 +1,7 @@
 grammar Mb1ProgramTree
 
 entry Model:
-  mb1ProgramTree+=SubTableType;
+  mb1ProgramTree+=SubTableType*;
 
 PropertyType:
 	'Property: ' name=STRING
