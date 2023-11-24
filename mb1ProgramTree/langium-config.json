@@ -3,7 +3,7 @@
     "languages": [{
         "id": "mb-1-program-tree",
         "grammar": "src/language/mb-1-program-tree.langium",
-        "fileExtensions": [".mb1programtree"],
+        "fileExtensions": [".bsdsl"],
         "textMate": {
             "out": "syntaxes/mb-1-program-tree.tmLanguage.json"
         },

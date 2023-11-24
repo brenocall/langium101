@@ -60,7 +60,7 @@
                     "Mb1ProgramTree",
                     "mb-1-program-tree"
                 ],
-                "extensions": [".mb1programtree"],
+                "extensions": [".bsdsl"],
                 "configuration": "./language-configuration.json"
             }
         ],
