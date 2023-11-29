@@ -8,9 +8,8 @@ import { extractDestinationAndName } from './cli-util.js';
 
 export function replacer(key:any,value:any)
 {
-    
-    console.log("key: "+key);
-    console.log("value: "+value);
+    //console.log("key: "+key);
+    //console.log("value: "+value);
     /** Every AST node has a type corresponding to what was specified in the grammar declaration. */
     if (key=="$type") return undefined;
     /** The container node in the AST; every node except the root node has a container. */
@@ -32,13 +31,6 @@ export function generateJavaScript(model: Model, filePath: string, destination: 
     const generatedFilePath = `${path.join(data.destination, data.name)}.json`;
 
     const fileNode = new CompositeGeneratorNode();
-
-    fileNode.append('"use strict";', NL, NL);
-  /*  model.greetings.forEach(greeting => fileNode.append(`console.log('Hello, ${greeting.person.ref?.name}!');`, NL));
-
-    if (!fs.existsSync(data.destination)) {
-        fs.mkdirSync(data.destination, { recursive: true });
-    }*/
 
     for (let mB1programTree of model.mb1ProgramTree)
     {
