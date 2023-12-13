@@ -5,7 +5,7 @@ entry Model:
 
 PropertyType:
 	'Property: ' name=STRING
-	'NumBytes:' numBytes=Num_Bytes
+	'DataType:' dataType=Data_Type
     ("DefaultValue:" default=STRING)?;
 
  SubTableType:
@@ -35,14 +35,20 @@ Two returns string: '2';
 Three returns string: '3';
 Four returns string: '4';
 
-type DataType = 'Byte' | 'Short' | 'Int' | 'Long';
+type DataType = 'Byte' | 'Short' | 'Int' | 'Long' | 'ConnectionType';
 Data_Type returns DataType: 
-    Byte | Short | Int | Long 
+    Byte | Short | Int | Long | ConnectionType 
 ;
 Byte returns string: 'byte';
 Short returns string: 'short';
 Int returns string: 'int';
 Long returns string: 'long';
+ConnectionType returns string: 'connectionType';
+
+ConnectionTypeX:
+	'High Byte' highByte=Byte
+	'Low Byte' lowByte=Byte
+;
   
 type BaseModuleType = 'MB1' | 'MB0' | 'MB0_1' | 'MCO';
 BaseModule_Type returns BaseModuleType:

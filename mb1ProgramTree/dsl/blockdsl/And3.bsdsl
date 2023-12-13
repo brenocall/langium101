@@ -1,0 +1,10 @@
+SubTable Name: "AND3" 
+Property: "ModuleId" DataType: short DefaultValue: "0002"
+Property: "UniqueId" DataType: short 
+Property: "DiagIdId" DataType: byte
+Property: "Negation" DataType: byte
+Property: "OutputConnection1" DataType: short  
+Property: "InputConnection1" DataType: short
+Property: "InputConnection2" DataType: short 
+Property: "InputConnection3" DataType: short 
+END

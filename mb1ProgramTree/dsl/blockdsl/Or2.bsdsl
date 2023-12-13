@@ -1,0 +1,9 @@
+SubTable Name: "OR2"
+    Property: "ModuleId" DataType: short DefaultValue: "0x0005"
+    Property: "UniqueId" DataType: short 
+    Property: "DiagIdId" DataType: byte 
+    Property: "Negation" DataType: byte 
+    Property: "OutputConnection1" DataType: connectionType 
+    Property: "InputConnection1" DataType: connectionType 
+    Property: "InputConnection1" DataType: connectionType 
+END 

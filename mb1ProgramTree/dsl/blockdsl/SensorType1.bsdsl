@@ -1,0 +1,11 @@
+SubTable Name: "SensorType1"
+    Property: "ModuleId" DataType: short DefaultValue: "0x002B"
+    Property: "UniqueId" DataType: short 
+    Property: "DiagIdId" DataType: byte 
+    Property: "Config" DataType: byte 
+    Property: "Bounce" DataType: byte 
+    Property: "Sync" DataType: byte 
+    Property: "OutputConnection1" DataType: connectionType 
+    Property: "InputReset" DataType: connectionType 
+    Property: "Input1" DataType: connectionType 
+END 

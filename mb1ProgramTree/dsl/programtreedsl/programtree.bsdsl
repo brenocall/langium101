@@ -1,0 +1,309 @@
+SubTable Name: "MB1OverallProgramTree"
+    Property: "MagicBytes" DataType: long DefaultValue: "CPM2" 
+    Property: "Length" DataType: long
+    Property: "Format" DataType: byte
+    Property: "Reserved" DataType: byte
+    Property: "NumberOfOffsets" DataType: byte
+        SubTable Name: "ProgramOffset" 
+            Property: "HWPosition" DataType: byte
+            Property: "Type" DataType: byte
+            Property: "Reserved" DataType: short
+        END
+        SubTable Name: "ProgramTreeComposite"   
+            Property: "MagicBytes" DataType: long DefaultValue: "PPM2" 
+            Property: "Length" DataType: long
+            Property: "OffsetToMinorFormat" DataType: byte
+            Property: "CRCAll" DataType: short
+            Property: "CRCSafe" DataType: short
+            Property: "CRCWithoutL3" DataType: short
+            Property: "CRCStandard" DataType: short
+            Property: "MinorFormat" DataType: byte
+            Property: "NumberOfOffsets" DataType: byte
+            Property: "UserProgramOffset" DataType: long
+            Property: "Level3ConfigOffset" DataType: long
+            Property: "StandardProgramOffset" DataType: long
+            Property: "MB1DiagosticDataOffset" DataType: long
+            Property: "ProgramInfoOffset" DataType: long
+            Property: "ToolInformationOffset" DataType: long
+            Property: "SecurifyOffset" DataType: long
+            Property: "NonCrcDataOffset" DataType: long
+            SubTable Name: "UserProgram"
+                Property: "Length" DataType: long
+                Property: "DeviceType" DataType: short
+                Property: "Format" DataType: byte
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "BlockElementsDataOffset" DataType: long
+                Property: "DeviceProgramConnectorsOffset" DataType: long //DP only
+                Property: "DiagnosticBitsOffset" DataType: long //DP Only 
+                Property: "OverallRHSConfigDataOffset" DataType: long
+                Property: "OverallLHSConfigDataOffset" DataType: long
+                Property: "DeviceProgramRefTableOffset" DataType: long
+                Property: "ModuleIOConfigTableOffset" DataType: long //versioned
+                Property: "MacroTableOffset" DataType: long //versioned
+                Property: "FSoEConfigTableOffset" DataType: long //versioned
+                SubTable Name: "BlockElementData" 
+                    Property: "Length" DataType: long
+                    ContentType: "BlockBS"
+                END
+                SubTable Name:  "DeviceProgramConnectors"
+                    Property: "Format" DataType: byte
+                    Property: "Count" DataType: byte
+                    ContentType: "DPConnectorBS"   
+                END
+                SubTable Name: "DiagnosticBits" 
+                    Property: "Format" DataType: byte DefaultValue: "1"
+                    Property: "Count" DataType: byte DefaultValue: "32" 
+                    ContentType: "DiagnosticBits"
+                END
+                SubTable Name: "OverallSafeRHSConfigData" 
+                    Property: "Format" DataType: byte DefaultValue: "1"
+                    Property: "Count" DataType: byte  
+                    SubTable Name: "RHSConfigOffset" 
+                        Property: "ModuleId" DataType: short
+                        Property: "ConfigTableOffset" DataType: short
+                    END
+                    SubTable Name: "RHSConfigBasic"
+                        Property: "DeviceType" DataType: byte
+                        Property: "TableLength" DataType: short DefaultValue: "13"
+                        Property: "Version" DataType: byte DefaultValue: "1"
+                        Property: "Reserved" DataType: byte DefaultValue:"0"
+                        Property: "TestPulse0" DataType: short
+                        Property: "TestPulse1" DataType: short
+                        Property: "TestPulse2" DataType: short
+                        Property: "TestPulse3" DataType: short
+                    END
+                END
+                SubTable Name: "OverallLHSConfigData"
+                    Property: "Format" DataType: byte DefaultValue: "1"
+                    Property: "ModuleCount" DataType: byte  
+                    SubTable Name: "LHSConfigOffset" 
+                        Property: "ModuleId" DataType: short
+                        Property: "ConfigTableOffset" DataType: short
+                    END
+                    SubTable Name: "MultiLink"
+                        Property: "TableLength" DataType: short DefaultValue: "10"
+                        Property: "HWModuleVersion" DataType: short DefaultValue: "0101"
+                        Property: "FirmareVersion" DataType: short DefaultValue:"0101"
+                        Property: "BaudRate" DataType: byte
+                        Property: "Format" DataType: byte DefaultValue:"1"
+                        Property: "Reserved" DataType: short DefaultValue: "0000"
+                    END
+                    SubTable Name: "PDP67Link"
+                        Property: "Length" DataType: short
+                        Property: "ModuleId" DataType: byte
+                        Property: "HWModuleVersion" DataType: byte
+                        Property: "HWModulePosition" DataType: byte
+                        Property: "NumOfPeripheralModules" DataType: byte
+                        Property: "PM1ConfigOffset" DataType: byte DefaultValue:"11"
+                        Property: "PM2ConfigOffset" DataType: byte
+                        Property: "PM3ConfigOffset" DataType: byte
+                        Property: "PM4ConfigOffset" DataType: byte
+                        SubTable Name: "PM1ConfigType1_2" 
+                            Property: "PMType" DataType: byte 
+                            Property: "PMVersion" DataType: byte DefaultValue:"0"
+                            Property: "PMAddress" DataType: byte 
+                            Property: "STOutputMask" DataType: byte
+                            Property: "TestPulseOutputMask" DataType: byte
+                            Property: "24VOutputMask" DataType: byte
+                            Property: "UnusedOutputMask" DataType: byte
+                            Property: "InvertTestPulse" DataType: byte DefaultValue:"0"
+                            Property: "TestPulseLength" DataType: byte DefaultValue:"0"
+                        END
+                        SubTable Name: "PM1ConfigType3"
+                            Property: "PMType" DataType: byte DefaultValue:"3" //PDP67 F8DI 4DO 5/5 ION (5 pole)
+                            Property: "PMVersion" DataType: byte DefaultValue:"0"
+                            Property: "PMAddress" DataType: byte
+                            Property: "FSOutputMask" DataType: short
+                            Property: "NoDarkTestOutputMask" DataType: short
+                            Property: "STOutputMask" DataType: short
+                            Property: "TestPulseOutputMask" DataType: short
+                            Property: "24VOutputMask" DataType: short
+                            Property: "UnusedOutputMask" DataType: short
+                        END
+                        SubTable Name: "PM1ConfigType4"
+                            Property: "PMType" DataType: byte DefaultValue:"4" //PDP67 F10DI 4DO 5/8 ION (8 pole)
+                            Property: "PMVersion" DataType: byteDefaultValue:"0"
+                            Property: "PMAddress" DataType: byte 
+                            Property: "FSOutputMask" DataType: short
+                            Property: "NoDarkTestOutputMask" DataType: short
+                            Property: "STOutputMask" DataType: short
+                            Property: "TestPulseOutputMask" DataType: short 
+                            Property: "24VOutputMask" DataType: short 
+                            Property: "UnusedOutputMask" DataType: short
+                        END
+                    END
+                    SubTable Name: "SafetyNet"
+                        ContentType: "SafetyNetConfigBS"
+                    END
+                    SubTable Name: "EtherCAT FSoE"
+                        ContentType: "EtherCATConfigBS"
+                    END
+                    SubTable Name: "AnalogConfig"
+                        ContentType: "AnalogConfigBS"
+                    END
+                END
+                SubTable Name: "DeviceProgRefTable"
+                    Property: "Format" DataType: short DefaultValue: "4, 12"
+                    Property: "Reserved" DataType: byte
+                    Property: "NumberOfOffsets" DataType: byte
+                    SubTable Name: "DPReferenceTable"
+                        Property: "HWModulePosition" DataType: byte
+                        Property: "SmartType" DataType: byte
+                        Property: "Reserve" DataType: byte
+                        Property: "DeviceProgramIndex" DataType: byte
+                        Property: "DPCRC" DataType: short
+                        Property: "CRCWithoutL3" DataType: short
+                        Property: "DiagUserID" DataType: short
+                        Property: "DiagUserID" DataType: short
+                        Property: "Reserved" DataType: short
+                    END
+                END
+                SubTable Name: "ModuleIOConfig"
+                    ContentType: "ModuleIOConfigBS"
+                END
+                SubTable Name: "MacroTableComposite"
+                    ContentType: "MacroTableCompositeBS"
+                END
+                SubTable Name: "FSOEConfigComposite"
+                    ContentType: "FSOEConfigCompositeBS"
+                END
+                SubTable Name: "OverallLaserConfigComposite"
+                    ContentType: "OverallLaserConfigCompositeBS"
+                END
+            END
+            SubTable Name: "Level3Program"
+                Property: "Length" DataType: long
+                Property: "Format" DataType: byte DefaultValue: "1"
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "L3FixedValueTableOffset" DataType: long
+                Property: "L3DevProgramSafeCRCOffset" DataType: long
+                SubTable Name: "L3FixedValueTable"
+                    ContentType: "L3FixedValueTableBS"
+                END 
+                SubTable Name: "L3DevProgramSafeCRCOffset"
+                    ContentType: "L3DevProgramSafeCRCBS"
+                END 
+            END
+            SubTable Name: "StandardProgram"
+                Property: "Length" DataType: long
+                Property: "Reserved" DataType: short
+                Property: "Format" DataType: byte DefaultValue: "1"
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "ReservedTableOffset" DataType: long
+                Property: "OverallStardardRHSConfigOffset" DataType: long
+                Property: "OverallModBusOffset" DataType: long
+                Property: "ConnectedDeviceConfigffset" DataType: long
+                Property: "EthercatSlaveSubTableffset" DataType: long
+                SubTable Name: "ReservedTable"  
+                END
+                SubTable Name: "OverallStardardRHS"  
+                    Property: "Format" DataType: byte DefaultValue: "1"
+                    Property: "DeviceCount" DataType: byte 
+                    SubTable Name: "StandardModuleDataOffset"
+                        Property: "HWModuleId" DataType: short 
+                        Property: "ConfigTableOffset" DataType: long 
+                    END 
+                    SubTable Name: "ConfigTableOffset"
+                        ContentType: "StandardModuleConfigBS"
+                    END 
+                END
+                SubTable Name: "OverallModBus"  
+                    Property: "Format" DataType: byte
+                    Property: "ConnectionsCount" DataType: byte
+                    Property: "ModbusConnectionOffset" DataType: short
+                    SubTable Name: "ModudbusConnectionConfig"
+                        ContentType: "ModudbusConnectionConfigBS"
+                    END
+                END
+                SubTable Name: "ConnectedDeviceConfig"  
+                    Property: "Format" DataType: byte
+                    Property: "ConnectionsCount" DataType: byte
+                    Property: "DeviceConnectionOffset" DataType: short
+                    SubTable Name: "DeviceConnectionConfig"
+                        ContentType: "DeviceConnectionConfigBS"
+                    END
+                END
+                SubTable Name: "EthercatSlaveSubTable"  
+                    Property: "TableVersion" DataType: byte DefaultValue: "0"
+                    Property: "Reserved1" DataType: byte DefaultValue: "0"
+                    Property: "Reserved2" DataType: byte DefaultValue: "0"
+                    Property: "Reserved3" DataType: byte DefaultValue: "0"
+                    ContentType: "EthercatConfigBS"
+                END
+            END
+            SubTable Name: "MD1DiagnosticData"
+                Property: "Length" DataType: long
+                Property: "Reserved1" DataType: byte DefaultValue: "0"
+                Property: "Reserved2" DataType: byte DefaultValue: "0"
+                Property: "Reserved3" DataType: byte DefaultValue: "0"
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "DisplayUserMessageOffset" DataType: long
+                Property: "PVISChoiceTableOffset" DataType: long
+                Property: "FieldbusConfigOffset" DataType: long
+                SubTable Name: "DisplayUserMessage"
+                    Property: "Format" DataType: short DefaultValue: "20, 30"
+                    ContentType: "UserMessageBS"
+                END 
+                SubTable Name: "PVISChoiceTable"
+                    Property: "Format" DataType: short DefaultValue: "0, 100"
+                    ContentType: "PVISChoiceTableBS"
+                END 
+                SubTable Name: "FieldbusConfigTable"
+                    Property: "Format" DataType: byte DefaultValue: "1"
+                    Property: "FieldbusCount" DataType: byte
+                END 
+            END
+            SubTable Name: "ProgramInfo"
+                Property: "Length" DataType: long
+                SubTable Name: "ProgramData"
+                    Property: "ProgramId" DataType: short DefaultValue: "1"
+                    Property: "ProgramLength" DataType: short
+                    ContentType: "ProgramName"
+                END
+                SubTable Name: "BaseUnitData"
+                    Property: "BaseUnitId" DataType: short DefaultValue: "2"
+                    Property: "BaseUnitLength" DataType: short
+                    ContentType: "BaseUnitName"
+                END  
+            END
+            SubTable Name: "ToolInformation"
+                Property: "Length" DataType: long
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "GUIChecksumOffset" DataType: long
+                SubTable Name: "GUIChecksum"
+                    Property: "GUIChecksum" DataType: short
+                END
+            END
+            SubTable Name: "Security"
+                Property: "Length" DataType: long
+                Property: "Reserved" NumBytes: 3
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "passwordCompositeOffset" DataType: long
+                SubTable Name: "password"
+                    Property: "Length" DataType: short //mb0/mXp only
+                    Property: "PasswordHashLevel1" DataType: short
+                    Property: "PasswordHashLevel2" DataType: short
+                    Property: "PasswordHashLevel2" DataType: short
+                END
+            END
+            SubTable Name: "NONCRCData"
+                Property: "Length" DataType: long
+                Property: "NumberOfOffsets" DataType: byte
+                Property: "LastSavedDateOffset" DataType: long
+                Property: "LastVersionAndBuildOffset" DataType: long
+                Property: "PVISDiagnosticIntegrityChecksumOffset" DataType: long
+                SubTable Name: "LastSavedDate"
+                    Property: "Length" DataType: short
+                    ContentType: "LastSaveDataBS"
+                END
+                SubTable Name: "LastVersionAndBuild"
+                    Property: "Length" DataType: short
+                    ContentType: "LastSaveDataBS"
+                END
+                SubTable Name: "PVISDiagnosticIntegrityChecksum"
+                    Property: "Length" DataType: short
+                    Property: "PVISDiagIntegrityCRC" DataType: short
+                END
+            END
+        END 
+ END 
